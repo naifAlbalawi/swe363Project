@@ -34,7 +34,6 @@ const db = getFirestore(firebaseApp);
 function App() {
   return (
     <div className="App">
-      
     <Navbar />
     <Intro />
     <CarIntro/>
