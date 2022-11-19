@@ -1,11 +1,3 @@
-import Navbar from "./Navbar";
-import React from "react";
-import Intro from "./Intro"
-import CarIntro from "./CarouselIntro";
-import Forms from "./forms"
-import SimpleSlider from "./CarouserLostPosts";
-import '../styling/App.css';
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // what service you want to use for example: import {getFirestore} from 'firebase/firestore;
@@ -30,18 +22,3 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // assign the database 
 const db = getFirestore(firebaseApp);
-
-function App() {
-  return (
-    <div className="App">
-    <Navbar />
-    <Intro />
-    <CarIntro/>
-    <Forms/>
-    <SimpleSlider/>
-    </div>  
-  );
-}
-
-export default App;
-

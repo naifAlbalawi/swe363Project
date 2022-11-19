@@ -55,8 +55,8 @@ export default function SimpleSlider(listOfposts) {
 
 function LostCard(post){
  return( 
-    <div className="Card">
- <Card  >
+    <div >
+ <Card  className="Card">
       <Card.Img variant="top" src={post.imageName} style={{width:"100%"}} />
       <Card.Body>
         <Card.Title>{post.itemName}</Card.Title>

@@ -1,7 +1,6 @@
 import React from 'react';
 function Intro() {
     return (
-
     <section id="intro">
 
         <div className="intro-body">
