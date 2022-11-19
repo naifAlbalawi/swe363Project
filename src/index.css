@@ -16,6 +16,7 @@ body {
 /* Intro Section */
 .intro-body {
   background-color: var(--bg-color);
+  border-bottom: 2px solid var(--white);
 }
 
 .identity {
@@ -203,6 +204,3 @@ body {
   max-width: 350px;
 }
 
-.active {
-  color: #121826;
-}

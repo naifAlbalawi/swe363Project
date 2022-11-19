@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../styling/App.css";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-// import Intro from "../components/Intro"
+import Intro from "../components/Intro"
 // import CarIntro from "../components/CarouselIntro";
 // import Forms from "../components/forms"
 // import SimpleSlider from "../components/CarouserLostPosts";
@@ -16,11 +16,11 @@ function App() {
     }, 5000);
   }, []);
 
+  const text = "404: Page not found";
   return (
     <div className="App">
       <Navbar />
-      <p>Page Not Found</p>
-      <p>404</p>
+      <Intro text={text} />
     </div>
   );
 }

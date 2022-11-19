@@ -1,16 +1,19 @@
-import React from 'react';
-function Intro() {
-    return (
+import React from "react";
+import PropTypes from 'prop-types'
+
+function Intro({text}) {
+  return (
     <section id="intro">
+      <div className="intro-body">
+        <h1 className="identity">{text}</h1>
+      </div>
+    </section>
+  );
 
-        <div className="intro-body">
-          <h1 className="identity">Trying to save what KFUPM students and staff lost</h1>
-        </div>
-       
-    
-      </section>
+Intro.propTypes = {
+  text: PropTypes.string
+}
 
-    )
-
-};
+}
 export default Intro;
+

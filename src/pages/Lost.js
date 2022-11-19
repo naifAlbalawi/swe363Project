@@ -7,10 +7,11 @@ import Forms from "../components/forms"
 import SimpleSlider from "../components/CarouserLostPosts";
 
 function App () {
+  const text = "Lost Item Posts";
   return (
     <div className="App">
     <Navbar />
-    <Intro />
+    <Intro text={text} />
     {/* <CarIntro/> */}
     <Forms/>
     <SimpleSlider/>
