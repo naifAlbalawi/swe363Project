@@ -6,6 +6,8 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import { getFunctions } from "firebase/functions";
+import Login from "./login";
+import Signup from "./signUp";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,3 +24,18 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // assign the database 
 const db = getFirestore(firebaseApp);
+
+function App() {
+  return (
+    <div className="App">
+    <Navbar />
+    <Intro />
+    <CarIntro/>
+    <Forms/>
+    <SimpleSlider/>
+    </div>  
+  );
+}
+
+export default App;
+
