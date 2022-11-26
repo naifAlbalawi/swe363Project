@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 function Navbar() {
-  const [searchParams, setSearchParams] = useSearchParams({ id: 0 });
-  const ID = searchParams.get("id");
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -43,23 +41,25 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="d-flex me-2">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-dark" type="submit">
+          <form className="fit-c" role="search">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li>
+                <input
+                  className="nav-link"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </li>
+            </ul>
+            {/* <button className="btn btn-outline-dark" type="submit">
               Search
-            </button>
+            </button> */}
           </form>
         </div>
       </div>

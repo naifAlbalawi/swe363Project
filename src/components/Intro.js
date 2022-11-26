@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-function Intro({text}) {
+function Intro({ text }) {
   return (
     <section id="intro">
       <div className="intro-body">
@@ -9,11 +9,9 @@ function Intro({text}) {
       </div>
     </section>
   );
+}
 
 Intro.propTypes = {
-  text: PropTypes.string
-}
-
-}
+  text: PropTypes.string,
+};
 export default Intro;
-

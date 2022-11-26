@@ -204,3 +204,8 @@ body {
   max-width: 350px;
 }
 
+#navbarSupportedContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
