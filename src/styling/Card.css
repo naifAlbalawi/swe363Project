@@ -33,19 +33,13 @@
   display: flex;
 }
 
-.card-header {
-}
+/* .card-header {
+} */
 
 .card-tags {
   margin-left: 10px;
   font-size: 10px;
   align-self: flex-end;
-}
-
-.card-options {
-}
-
-.card-options input {
 }
 
 .images {
@@ -68,8 +62,8 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card-body {
-}
+/* .card-body {
+} */
 
 .card-contact-container {
   display: flex;

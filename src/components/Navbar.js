@@ -44,7 +44,7 @@ function Navbar() {
           <form className="fit-c" role="search">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link login" to="/login">
                   Login
                 </Link>
               </li>

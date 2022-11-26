@@ -21,7 +21,7 @@ body {
 
 .identity {
   margin: auto;
-  padding: 100px;
+  padding: 50px 0;
   text-align: center;
 }
 
@@ -208,4 +208,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+
+.login {
+  margin: 0 20px;
+  border: 1px solid;
+  border-radius: 5px;
+  color: #999;
+}
+
+.login:hover {
+  color:aliceblue;
+  background-color: #999;
 }
