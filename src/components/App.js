@@ -39,6 +39,7 @@ function App() {
     <CarIntro/>
     <Forms/>
     <SimpleSlider/>
+    
     </div>  
   );
 }
