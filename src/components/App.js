@@ -14,6 +14,8 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import { getFunctions } from "firebase/functions";
+import Login from "./login";
+import Signup from "./signUp";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,11 +36,15 @@ const db = getFirestore(firebaseApp);
 function App() {
   return (
     <div className="App">
-    <Navbar />
+   
+    {/* <Navbar />
     <Intro />
     <CarIntro/>
     <Forms/>
-    <SimpleSlider/>
+    <SimpleSlider/> */}
+    {/* <Login/> */}
+    <Signup/>
+
     </div>  
   );
 }
