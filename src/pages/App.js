@@ -17,7 +17,6 @@ function App() {
       <Route path="/lost" element={<Lost />} />
       <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
-      
     </Routes>
   );
 }

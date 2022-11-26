@@ -2,6 +2,7 @@
   --bg-color: #20293a;
   --bg-color-2: #121826;
   --bg-color-3: #394355;
+  --bg-color-3-dark: #2a303c;
   --white: #fff;
 }
 
@@ -55,7 +56,7 @@
 .card-img {
   margin: 10px 0;
   width: 100%;
-  max-height: 250px;
+  max-height: 300px;
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
@@ -81,12 +82,12 @@
   padding: 2px 5px;
   border-radius: 5px;
   background-color: var(--white);
-  transition: 200ms ease-in-out;
-
+  transition: 150ms ease-in-out;
 }
 
+.card-dropdown > .link:focus,
 .card-contact:hover {
-  transform: scale(1.050);
+  transform: scale(1.05);
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -102,4 +103,71 @@
 .card-date {
   margin: 0;
   padding: 0;
+}
+
+.card-dropdown {
+  position: relative;
+}
+
+.card-dropdown-menu {
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  top: 0;
+  background-color: var(--bg-color);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-10px);
+  transition: 150ms opacity ease-in-out, transform 150ms ease-in-out;
+}
+
+
+.card-dropdown.active > .link + .card-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-links {
+  display: grid;
+  gap: 5px;
+}
+
+.link, .link:link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--white);
+
+}
+
+.link:hover, .link:focus, .link:active {
+  color: var(--white);
+  opacity: 0.7;
+}
+
+.link.red {
+  color: rgba(255, 0, 0, 0.7)
+}
+
+.link.admin {
+  display: none;
+}
+
+.link.user {
+  display: flex;
+}
+
+.icon {
+  height: 75%;
+  margin: auto 0 auto auto;
+}
+
+hr {
+  padding: 0;
+  margin: 0;
 }
