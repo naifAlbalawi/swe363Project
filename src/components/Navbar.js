@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           LOGO
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,32 +21,32 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="#FormBack">
+              <a className="nav-link" href="/#FormBack">
                 Create Post
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/found">
+              <NavLink className="nav-link" to="/post?found=true">
                 Found Items
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/lost">
+              <NavLink className="nav-link" to="/post?lost=true">
                 Lost Items
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <NavLink className="nav-link" to="/about">
                 About Us
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <form className="fit-c" role="search">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link login" to="/login">
+                <NavLink className="nav-link login" to="/login">
                   Login
-                </Link>
+                </NavLink>
               </li>
               <li>
                 <input

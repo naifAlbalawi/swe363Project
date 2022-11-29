@@ -7,6 +7,7 @@ import edit from "../images/edit.png";
 import deletep from "../images/delete.png";
 import report from "../images/report.png";
 import block from "../images/block.png";
+import profile from "../images/profile.png";
 
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.matches("[data-dropdown-button]");
@@ -19,12 +20,27 @@ document.addEventListener("click", (e) => {
   }
 
   document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
-    if (dropdown === currentDropdown) return;
-    dropdown.classList.remove("active");
+    if (dropdown.classList.contains("copy")) {
+      setTimeout(function () {
+        dropdown.classList.remove("active");
+        blurAll();
+      }, 700);
+    }
+    if (dropdown !== currentDropdown) {
+      dropdown.classList.remove("active");
+      blurAll();
+    } else return;
   });
 });
 
-function Card({ title, tags, src, alt, body, phone, time }) {
+function blurAll() {
+  var tmp = document.createElement("input");
+  document.body.appendChild(tmp);
+  tmp.focus();
+  document.body.removeChild(tmp);
+}
+
+function Card({ user, email, title, tags, src, alt, body, phone, time }) {
   const copy = () => {
     const out = `
     I want to share this item post from OurWebsite
@@ -34,16 +50,15 @@ function Card({ title, tags, src, alt, body, phone, time }) {
 
     call ${phone}
     `;
-
     navigator.clipboard.writeText(out);
   };
 
   return (
     <div className="card-container">
-      <div className="header-container">
+      <div className="card-profile">
         <div className="head-tag">
-          <h3 className="card-header">{title}</h3>
-          <span className="card-tags">{tags}</span>
+          <h3 className="card-header">{user}</h3>
+          <span className="card-tags">{email}</span>
         </div>
         <div className="card-dropdown" data-dropdown>
           <input
@@ -54,50 +69,67 @@ function Card({ title, tags, src, alt, body, phone, time }) {
             alt="Menu"
           />
           <div className="card-dropdown-menu">
-            <div className="dropdown-links">
-              <a href="#" className="link">
-                Edit
-                <img className="icon" src={edit} alt="edit" />
-              </a>
-              <hr />
-              <a href="#" className="link red">
-                Delete
-                <img className="icon" src={deletep} alt="delete" />
-              </a>
-              <hr />
-              <a href="#" className="link red user">
-                Report
-                <img className="icon" src={report} alt="report" />
-              </a>
-              <a href="#" className="link red admin">
-                Block
-                <img className="icon" src={block} alt="block" />
-              </a>
-            </div>
+            <a href="#" className="link">
+              Profile
+              <img className="icon" src={profile} alt="profile" />
+            </a>
+            <hr />
+            <a href="#" className="link">
+              Edit
+              <img className="icon" src={edit} alt="edit" />
+            </a>
+            <hr />
+            <a href="#" className="link red">
+              Delete
+              <img className="icon" src={deletep} alt="delete" />
+            </a>
+            <hr />
+            <a href="#" className="link red">
+              Report
+              <img className="icon" src={report} alt="report" />
+            </a>
+            <a href="#" className="link red admin">
+              Block
+              <img className="icon" src={block} alt="block" />
+            </a>
           </div>
         </div>
       </div>
-      <img className="card-img" src={src} alt={alt} />
-      <p className="card-body">{body}</p>
-      <div className="footer-container">
-        <form className="card-contact-container">
-          <input
-            className="card-contact"
-            type="image"
-            src={call}
-            alt="Call"
-            formAction={`tel:${phone}`}
-          />
-          <input
-            className="card-contact"
-            type="image"
-            src={share}
-            alt="Share"
-            onClick={() => copy()}
-            formAction={`none`}
-          />
-        </form>
-        <p className="card-date">{time}</p>
+      <div className="card-content">
+        <div className="header-container">
+          <div className="head-tag">
+            <h3 className="card-header">{title}</h3>
+            <span className="card-tags">{tags}</span>
+          </div>
+        </div>
+        <img className="card-img" src={src} alt={alt} />
+        <p className="card-body">{body}</p>
+        <div className="footer-container">
+          <form className="card-contact-container">
+            <input
+              className="link card-contact"
+              type="image"
+              src={call}
+              alt="Call"
+              formAction={`tel:${phone}`}
+            />
+            <div className="card-dropdown copy" data-dropdown>
+              <input
+                className="link card-contact"
+                type="image"
+                src={share}
+                alt="Share"
+                onClick={() => copy()}
+                formAction="javascript:return false;"
+                data-dropdown-button
+              />
+              <div className="card-dropdown-menu">
+                <span className="copy-content link">copied!</span>
+              </div>
+            </div>
+          </form>
+          <p className="card-date">{time}</p>
+        </div>
       </div>
     </div>
   );
@@ -111,6 +143,8 @@ Card.propTypes = {
   body: PropTypes.string,
   phone: PropTypes.string,
   time: PropTypes.string,
+  user: PropTypes.string,
+  email: PropTypes.string,
 };
 
 export default Card;
