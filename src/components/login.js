@@ -5,11 +5,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
-const direct = () => {
-  const g = document.getElementById("User-Email").value;
-  console.log(g);
-  console.log("helllp");
-};
+import LoginAuth from "./loginAuth"
 
 const Login = () => {
   const paperstyle = {
@@ -29,6 +25,8 @@ const Login = () => {
           </Avatar>
           <h2>Sign in</h2>
         </Grid>
+
+        <form id="Login-form" >
 
         <TextField
           id="User-Email"
@@ -55,13 +53,17 @@ const Login = () => {
           id="signin"
           type="submit"
           color="primary"
-          onClick={direct}
+          onClick={LoginAuth}
           fullWidth
           variant="contained"
           style={buttonstyle}
         >
           SIGN IN
         </Button>
+
+        </form>
+
+    
         <Typography>
           Don&apos;t have an account?
           <Link to="/signup">SIGN UP</Link>

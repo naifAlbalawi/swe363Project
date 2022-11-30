@@ -9,6 +9,7 @@ import { getFunctions } from "firebase/functions";
 import Login from "./login";
 import Signup from "./signUp";
 
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCZiHqFG1Jyi4CXrTjkKgnIA0SBr-AlXmo",
@@ -24,6 +25,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // assign the database 
 const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp);
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
     <CarIntro/>
     <Forms/>
     <SimpleSlider/>
+    
     </div>  
   );
 }
