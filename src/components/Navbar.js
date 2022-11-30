@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logout from "./logOutAuth";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/">
           LOGO
-        </NavLink>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,33 +21,33 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li id="Creat-post" className="nav-item">
               <Link className="nav-link" to="#FormBack">
                 Create Post
-              </a>
+                </Link>
             </li>
-            <li className="nav-item">
+            <li id="found" className="nav-item">
               <Link className="nav-link" to="/found">
                 Found Items
-              </NavLink>
+              </Link>
             </li>
-            <li className="nav-item">
+            <li id="lost" className="nav-item">
               <Link className="nav-link" to="/lost">
                 Lost Items
-              </NavLink>
+              </Link>
             </li>
-            <li className="nav-item">
+            <li id='about' className="nav-item">
               <Link className="nav-link" to="/about">
                 About Us
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <form className="fit-c" role="search">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link login" to="/login">
+                <Link className="nav-link login" to="/login">
                   Login
-                </NavLink>
+                </Link>
               </li>
               <li  className="nav-item">
                 <Link onClick={logout} id="LogOut" className="nav-link login" to="/login">
