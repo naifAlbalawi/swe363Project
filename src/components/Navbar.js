@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import  logout from "./logOutAuth"
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           LOGO
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,33 +20,33 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li id="Creat-post" className="nav-item" >
+            <li className="nav-item">
               <Link className="nav-link" to="#FormBack">
                 Create Post
-              </Link>
+              </a>
             </li>
-            <li id="found" className="nav-item">
-              <Link className="nav-link" to="/found" >
+            <li className="nav-item">
+              <Link className="nav-link" to="/found">
                 Found Items
-              </Link>
+              </NavLink>
             </li>
-            <li id="lost" className="nav-item" >
+            <li className="nav-item">
               <Link className="nav-link" to="/lost">
                 Lost Items
-              </Link>
+              </NavLink>
             </li>
-            <li id="about" className="nav-item"> 
+            <li className="nav-item">
               <Link className="nav-link" to="/about">
                 About Us
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <form className="fit-c" role="search">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link login" to="/login">
+                <NavLink className="nav-link login" to="/login">
                   Login
-                </Link>
+                </NavLink>
               </li>
               <li  className="nav-item">
                 <Link onClick={logout} id="LogOut" className="nav-link login" to="/login">

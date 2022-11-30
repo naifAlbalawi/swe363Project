@@ -210,15 +210,22 @@ body {
   align-items: center;
 }
 
-
 .login {
   margin: 0 20px;
+  padding-left: 10px;
   border: 1px solid;
   border-radius: 5px;
   color: #999;
 }
 
 .login:hover {
-  color:aliceblue;
+  color: aliceblue;
   background-color: #999;
 }
+
+/* active links will have a class of active*/
+/* .active {
+  color: red;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2);
+
+} */
