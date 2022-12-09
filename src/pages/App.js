@@ -17,12 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/posts" element={<Posts params={searchParams} />}>
-        {/* <Route
-          path="/:id"
-          element={<Posts user={usr} params={params} />}
-        ></Route> */}
-      </Route>
+      <Route path="/posts" element={<Posts params={searchParams} />}/>
       <Route path="/login" element={<Login />} />\
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NotFound />} />
