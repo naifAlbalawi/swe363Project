@@ -16,10 +16,9 @@ document.addEventListener("click", (e) => {
   let currentDropdown;
   if (isDropdownButton) {
     currentDropdown = e.target.closest("[data-dropdown]");
-    if (!currentDropdown.classList.contains("active"))
+    if (currentDropdown.classList.contains("active"))
       currentDropdown.classList.remove("active");
-  } else {
-    currentDropdown.classList.add("active");
+    else currentDropdown.classList.add("active");
   }
 
   document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
@@ -94,7 +93,11 @@ function Card({
               </div>
             </div>
           </div>
-          <img className="card-img" src={src} alt={alt} />
+          {src === "" ? (
+            <></>
+          ) : (
+            <img className="card-img" src={src} alt={alt} />
+          )}
           <p className="card-body">{body}</p>
           <div className="footer-container">
             <form className="card-contact-container">
@@ -163,7 +166,11 @@ function Card({
               <span className="card-tags">{tags}</span>
             </div>
           </div>
-          <img className="card-img" src={src} alt={alt} />
+          {src === "" ? (
+            <></>
+          ) : (
+            <img className="card-img" src={src} alt={alt} />
+          )}
           <p className="card-body">{body}</p>
           <div className="footer-container">
             <form className="card-contact-container">

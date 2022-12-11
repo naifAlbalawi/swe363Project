@@ -66,7 +66,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags=""
-              src=""
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
               alt=""
               body={elem.body}
               phone={elem.phone}
@@ -110,7 +110,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags=""
-              src=""
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
               alt=""
               body={elem.body}
               phone={elem.phone}
@@ -154,7 +154,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags=""
-              src=""
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
               alt=""
               body={elem.body}
               phone={elem.phone}
@@ -196,7 +196,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags=""
-              src=""
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
               alt=""
               body={elem.body}
               phone={elem.phone}
@@ -223,7 +223,9 @@ function Posts({ params }) {
       <div className="App">
         <Navbar />
         <Intro text={text} />
-        <h3 className="sorry">Sorry, there are no posts at the moment, please try again later</h3>
+        <h3 className="sorry">
+          Sorry, there are no posts at the moment, please try again later
+        </h3>
       </div>
     );
   } else {

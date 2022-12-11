@@ -83,12 +83,12 @@ function Navbar() {
                   </Link>
                 </li>
                 <li id="found" className="nav-item">
-                  <Link className={"nav-link"} to="/posts?found=true">
+                  <Link className={"nav-link"} to="/found">
                     Found Items
                   </Link>
                 </li>
                 <li id="lost" className="nav-item">
-                  <Link className={"nav-link"} to="/posts?lost=true">
+                  <Link className={"nav-link"} to="/lost">
                     Lost Items
                   </Link>
                 </li>

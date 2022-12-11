@@ -17,10 +17,14 @@ function LoginAuth() {
     e.preventDefault();
     const email = loginForm["User-Email"].value;
     const password = loginForm["User-password"].value;
-    signInWithEmailAndPassword(auth, email, password).then((cred) => {
-      console.log(cred.user);
-      loginForm.reset();
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        console.log(cred.user);
+        loginForm.reset();
+      })
+      .catch((e) => {
+        alert(e);
+      });
   });
 }
 export default LoginAuth;
