@@ -92,6 +92,11 @@ function Navbar() {
                     Lost Items
                   </Link>
                 </li>
+                <li id="lost" className="nav-item">
+                  <Link className={"nav-link"} to="/posts">
+                    All Items
+                  </Link>
+                </li>
                 <li id="about" className="nav-item">
                   <Link className={"nav-link"} to="/about">
                     About Us
