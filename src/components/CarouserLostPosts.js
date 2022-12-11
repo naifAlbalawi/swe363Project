@@ -17,7 +17,7 @@ export default function SimpleSlider() {
       data.forEach((post) => {
         let docRef = doc(db, "Users", post.data().user);
         getDoc(docRef).then((user) => {
-          console.log(user)
+          console.log(user);
           let timestamp = new Date(post.data().postedAt.seconds * 1000);
           let datetime = timestamp.toDateString();
           posts.push({
@@ -96,8 +96,7 @@ function LostCard(post) {
           <Card.Text>{post.body}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroup.Item> {post.phone}</ListGroup.Item>
-          <ListGroup.Item>{post.email}</ListGroup.Item>
+          <ListGroup.Item> {post.contact}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
           <Link to={`/posts?id=${post.id}`}>Visit</Link>
