@@ -42,7 +42,7 @@ export default function SimpleSlider() {
             email={elem.email}
             title={elem.title}
             tags={elem.location}
-            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+            // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
             alt={elem.title}
             body={elem.body}
             phone={elem.phone}
@@ -91,7 +91,7 @@ function LostCard(post) {
   return (
     <div>
       <Card className="Card">
-        <Card.Img variant="top" src={post.src} style={{ width: "100%" }} />
+        {/* <Card.Img variant="top" src={post.src} style={{ width: "100%" }} /> */}
         <Card.Body>
           <Card.Title>{post.title}</Card.Title>
           <Card.Text>{post.body}</Card.Text>

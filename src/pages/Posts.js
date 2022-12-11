@@ -65,7 +65,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags={elem.location}
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
               phone={elem.phone}
@@ -110,7 +110,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags={elem.location}
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
               phone={elem.phone}
@@ -155,7 +155,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags={elem.location}
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
               phone={elem.phone}
@@ -198,7 +198,7 @@ function Posts({ params }) {
               email={elem.email}
               title={elem.title}
               tags={elem.location}
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
               phone={elem.phone}

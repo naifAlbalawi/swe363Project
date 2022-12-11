@@ -1,156 +1,96 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useState } from "react";
+import '../styling/form.css'
+import { addDoc, collection, Timestamp,  } from "firebase/firestore"; 
+import { db, auth } from "../components/fb";
+
+
+
+
+
 
 function Forms() {
-  var x = useRef(null); // document.getElementById("LostForm");
-  var y = useRef(null); //document.getElementById("FoundForm");
-  var z = useRef(null); //document.getElementById("btn");
-  var r = useRef(null); //document.getElementById("FoundFB");
-  var t = useRef(null); //document.getElementById("LostFB");
 
-  function Lost() {
-    x.current.style.right = "100%";
-    y.current.style.left = "0";
-    z.current.style.left = "150px";
-    r.current.style.color = "white";
-    t.current.style.color = "grey";
+  const [name, setName] = useState('');
+  const [found, setFound] = useState(true);
+  const [location, setLocation] = useState("");
+  const [title, setTitile] = useState("");
+  const [desc, setDesc] = useState("");
+  const [contact, setContact] = useState("");
+
+
+
+  var el = document.getElementById('found-btn');
+  if(el){
+    document.getElementById("found-btn").addEventListener("click", () => setFound(true));
   }
 
-  function Found() {
-    y.current.style.left = "100%";
-    x.current.style.right = "0";
-    z.current.style.left = "0px";
-    t.current.style.color = "white";
-    r.current.style.color = "grey";
+  var el2 = document.getElementById('lost-btn');
+  if(el2){
+    document.getElementById("lost-btn").addEventListener("click", () => setFound(false));
   }
+
+
+ 
+
+  const  postItem = (event) =>  {
+
+    
+    console.log(auth.currentUser.uid);
+
+
+    event.preventDefault();
+
+
+   
+
+
+  
+    const postData = {
+      name: name,
+      found: found,
+      location: location,
+      postedAt: Timestamp.now(),
+      title: title,
+      desc: desc,
+      contact: contact,
+      user: auth.currentUser.uid,
+  };
+
+  console.log(postData);
+  addDoc(collection(db, "posts"), postData);
+
+  setName('');
+  setLocation("");
+  setTitile("");
+  setDesc("");
+  setContact("");
+  
+  }
+  
 
   return (
-    <div>
-      <div className="FormBack" id="FormBack">
-        <div className="form-box">
-          <div className="button-box">
-            <div ref={z} id="btn"></div>
-            <button
-              type="button"
-              className="toggle-btn"
-              ref={t}
-              id="LostFB"
-              onClick={Found}
-            >
-              Lost Post
-            </button>
-            <button
-              type="button"
-              className="toggle-btn"
-              ref={r}
-              id="FoundFB"
-              onClick={Lost}
-            >
-              Found Post
-            </button>
-          </div>
-          <form ref={x} id="LostForm" className="inputG">
-            <div>
-              <label>Full Name</label>
-              <input
-                type="text"
-                id="fullname"
-                className="input-field"
-                name="full_name"
-                placeholder="  khalid alharbi"
-                required
-              />
-              <label> Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input-field"
-                placeholder="XXXX@domain.com"
-                required
-              />
-            </div>
-
-            <label>where did you lost it?</label>
-            <select name="Where" className="input-field">
-              <option disabled selected>
-                building
-              </option>
-              <option>Building 59</option>
-              <option>Building 68</option>
-              <option>Building 27</option>
-              <option>Building 19</option>
-            </select>
-            <label>Item description</label>
-            <textarea
-              name="description"
-              className="input-field"
-              cols="30"
-              rows="4"
-              placeholder="green iphone with a blue cover"
-              required
-            ></textarea>
-            <div className="file-input">
-              <input type="file" id="file" className="file" />
-              <label htmlFor="file">upload image</label>
-            </div>
-            <br />
-            <button type="submit" className="sumbit-btn">
-              create post
-            </button>
-          </form>
-
-          <form ref={y} id="FoundForm" className="inputG">
-            <div>
-              <label>Full Name</label>
-              <input
-                type="text"
-                id="fullname"
-                className="input-field"
-                name="full_name"
-                placeholder="  khalid alharbi"
-                required
-              />
-              <label> Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input-field"
-                placeholder="XXXX@domain.com"
-                required
-              />
-            </div>
-
-            <label>where did you found it?</label>
-            <select name="Where" className="input-field">
-              <option disabled selected>
-                building
-              </option>
-              <option>Building 59</option>
-              <option>Building 68</option>
-              <option>Building 27</option>
-              <option>Building 19</option>
-            </select>
-            <label>Item description</label>
-            <textarea
-              name="description"
-              className="input-field"
-              cols="30"
-              rows="4"
-              placeholder="green iphone with a blue cover"
-              required
-            ></textarea>
-            <div className="file-input">
-              <input type="file" id="file" className="file" />
-              <label htmlFor="file">upload image</label>
-            </div>
-            <br />
-            <button type="submit" className="sumbit-btn">
-              create post
-            </button>
-          </form>
-        </div>
-      </div>
+    <div className="container-form">
+    <h1>Lost or Found Something?No Worries!</h1>
+    <div className="divider"></div>
+    <form action="#" onSubmit={postItem} >
+    <h2>Name</h2>
+    <input className="input" id="input-name"  name="name" onChange={event => setName(event.target.value)} value={name}/>
+    
+    <h2>Contact you through?</h2>
+    <input id="input-contact" className="input" name="contact" onChange={event => setContact(event.target.value)} value={contact}/>
+    <h2>The location of the lost item</h2>
+    <input id="input-location"  name="location" className="input" onChange={event => setLocation(event.target.value)} value={location}/>
+    <h2>Item name</h2>
+    <input id="input-item"className="input"  name="item"  onChange={event => setTitile(event.target.value)} value={title}/>
+    <h2>Describe the item</h2>
+    <input id="input-describtion" className="input" name="describtion"  onChange={event => setDesc(event.target.value)} value={desc}/>
+    <br/>
+    <div className="btn-container">
+    <input  id="lost-btn" className="form-btn" type="submit" value="Post Lost Item" /> 
+    <input id="found-btn" className="form-btn" type="submit" value="Post Found Item" />
     </div>
+  </form>
+  </div>
   );
 }
 export default Forms;
