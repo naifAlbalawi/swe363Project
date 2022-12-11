@@ -8,7 +8,6 @@ import Signup from "./Signup";
 import Posts from "./Posts";
 import Found from "./Found";
 import Lost from "./Lost";
-
 import { Routes, Route, useSearchParams } from "react-router-dom";
 
 function App() {

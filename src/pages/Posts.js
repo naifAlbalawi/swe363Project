@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../styling/App.css";
 import "../styling/Card.css";
@@ -15,7 +15,6 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useEffect } from "react";
 
 function Posts({ params }) {
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ function Posts({ params }) {
       }
     });
   });
-  window.history.pushState("user", "posts");
   const paramsVal = {
     id: params.get("id"),
     found: params.get("found"),
@@ -52,6 +50,7 @@ function Posts({ params }) {
             title: data.data().title,
             body: data.data().desc,
             phone: data.data().phone,
+            location: data.data().location,
             time: datetime,
           });
         });
@@ -65,9 +64,9 @@ function Posts({ params }) {
               user={elem.user}
               email={elem.email}
               title={elem.title}
-              tags=""
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-              alt=""
+              tags={elem.location}
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              alt={elem.title}
               body={elem.body}
               phone={elem.phone}
               time={elem.time}
@@ -95,6 +94,7 @@ function Posts({ params }) {
               title: post.data().title,
               body: post.data().desc,
               phone: post.data().phone,
+              location: post.data().location,
               time: datetime,
             });
           });
@@ -109,9 +109,9 @@ function Posts({ params }) {
               user={elem.user}
               email={elem.email}
               title={elem.title}
-              tags=""
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-              alt=""
+              tags={elem.location}
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              alt={elem.title}
               body={elem.body}
               phone={elem.phone}
               time={elem.time}
@@ -139,6 +139,7 @@ function Posts({ params }) {
               title: post.data().title,
               body: post.data().desc,
               phone: post.data().phone,
+              location: post.data().location,
               time: datetime,
             });
           });
@@ -153,9 +154,9 @@ function Posts({ params }) {
               user={elem.user}
               email={elem.email}
               title={elem.title}
-              tags=""
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-              alt=""
+              tags={elem.location}
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              alt={elem.title}
               body={elem.body}
               phone={elem.phone}
               time={elem.time}
@@ -181,6 +182,7 @@ function Posts({ params }) {
               title: post.data().title,
               body: post.data().desc,
               phone: post.data().phone,
+              location: post.data().location,
               time: datetime,
             });
           });
@@ -195,9 +197,9 @@ function Posts({ params }) {
               user={elem.user}
               email={elem.email}
               title={elem.title}
-              tags=""
-              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-              alt=""
+              tags={elem.location}
+              src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+              alt={elem.title}
               body={elem.body}
               phone={elem.phone}
               time={elem.time}
@@ -224,7 +226,9 @@ function Posts({ params }) {
         <Navbar />
         <Intro text={text} />
         <h3 className="sorry">
-          Sorry, there are no posts at the moment, please try again later
+          {update
+            ? "Loading..."
+            : "Sorry, there are no posts at the moment, please try again later"}
         </h3>
       </div>
     );

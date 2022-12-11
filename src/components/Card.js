@@ -10,7 +10,7 @@ import profileimg from "../images/profile.png";
 
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.matches("[data-dropdown-button]");
-  if (!(isDropdownButton && e.target.closest("[data-dropdown]") != null))
+  if ((isDropdownButton && e.target.closest("[data-dropdown]") === null))
     return;
 
   let currentDropdown;
@@ -152,7 +152,13 @@ function Card({
                 <img className="icon" src={profileimg} alt="profile" />
               </a>
               <hr /> */}
-              <a href="#" className="link red">
+              <a
+                onClick={(e) => {
+                  copy();
+                  e.preventDefault();
+                }}
+                className="link red"
+              >
                 Report
                 <img className="icon" src={report} alt="report" />
               </a>

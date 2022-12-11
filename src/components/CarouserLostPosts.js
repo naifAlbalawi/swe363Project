@@ -1,78 +1,116 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
+import { auth, db } from "../components/fb";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
+import ListGroup from "react-bootstrap/ListGroup";
+import logo from "../images/kfupm.png";
+import { Link } from "react-router-dom";
 
-import ListGroup from 'react-bootstrap/ListGroup';
-import logo from "../images/kfupm.png"
-
-
-export default function SimpleSlider(listOfposts) {
-    const list1= {imageName:logo,itemName:"iphone",itemDescreption:"green iphone with 64 gb and a broken screen",phone:"0590594040",email:"naif@gmail.com"}
-      listOfposts=new Array(5);
-      for(var i=0;i<20;i++){
-        listOfposts.push(list1)
-      }
-      
+export default function SimpleSlider() {
+  const [update, setUpdate] = useState(true);
+  const [postCollection, setPostCollection] = useState([]);
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    getDocs(collection(db, "posts")).then((data) => {
+      const posts = [];
+      data.forEach((post) => {
+        let docRef = doc(db, "Users", post.data().user);
+        getDoc(docRef).then((user) => {
+          let timestamp = post.data().time;
+          let datetime = timestamp.toDate().toDateString();
+          posts.push({
+            id: post.id,
+            user: user.data().Username,
+            email: user.data().Useremail,
+            title: post.data().title,
+            body: post.data().desc,
+            phone: post.data().phone,
+            location: post.data().location,
+            time: datetime,
+          });
+        });
+      });
+      setPostCollection(posts);
+      const arr = [];
+      postCollection.forEach((elem, index) => {
+        arr.push(
+          <LostCard
+            key={index}
+            id={elem.id}
+            user={elem.user}
+            email={elem.email}
+            title={elem.title}
+            tags={elem.location}
+            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+            alt={elem.title}
+            body={elem.body}
+            phone={elem.phone}
+            time={elem.time}
+          />
+        );
+      });
+      setCards(arr);
+      setUpdate(false);
+    });
+  }, [update]);
   var settings = {
-    className:"LostPosts",
+    className: "LostPosts",
     dots: true,
-    infinite: true,
-    slidesToShow:5,
+    infinite: false,
+    slidesToShow: 5,
     slidesToScroll: 5,
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 3000,
     cssEase: "linear",
     responsive: [
-
-        {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
-            }
-          },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 2
-          }
-        }
-        ]
-
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+    ],
   };
+  console.log(cards);
+  return <Slider {...settings}>{cards}</Slider>;
+}
+
+function LostCard(post) {
   return (
-    
-    <Slider {...settings} >
-          {listOfposts.map(LostCard)}
-    </Slider>
+    <div>
+      <Card className="Card">
+        <Card.Img variant="top" src={post.src} style={{ width: "100%" }} />
+        <Card.Body>
+          <Card.Title>{post.title}</Card.Title>
+          <Card.Text>{post.body}</Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item> {post.phone}</ListGroup.Item>
+          <ListGroup.Item>{post.email}</ListGroup.Item>
+        </ListGroup>
+        <Card.Body>
+          <Link to={`/posts?id=${post.id}`}>Visit</Link>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
-
-
-function LostCard(post){
- return( 
-    <div >
- <Card  className="Card">
-      <Card.Img variant="top" src={post.imageName} style={{width:"100%"}} />
-      <Card.Body>
-        <Card.Title>{post.itemName}</Card.Title>
-        <Card.Text>
-          {post.itemDescreption}
-        </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item> {post.phone}</ListGroup.Item>
-        <ListGroup.Item>{post.email}</ListGroup.Item>
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">contact</Card.Link>
-        <Card.Link href="#">share</Card.Link>
-      </Card.Body>
-    </Card>
-    </div>);
-}
-

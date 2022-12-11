@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import "../styling/App.css";
 import "../styling/Card.css";
 import Navbar from "../components/Navbar";
@@ -15,7 +14,6 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useEffect } from "react";
 
 function Found() {
   const navigate = useNavigate();
@@ -34,6 +32,7 @@ function Found() {
     const posts = collection(db, "posts");
     const q = query(posts, where("found", "==", true));
     getDocs(q).then((data) => {
+      console.log(data);
       const posts = [];
       data.forEach((post) => {
         let docRef = doc(db, "Users", post.data().user);
@@ -47,6 +46,7 @@ function Found() {
             title: post.data().title,
             body: post.data().desc,
             phone: post.data().phone,
+            location: post.data().location,
             time: datetime,
           });
         });
@@ -61,9 +61,9 @@ function Found() {
             user={elem.user}
             email={elem.email}
             title={elem.title}
-            tags=""
-            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-            alt=""
+            tags={elem.location}
+            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+            alt={elem.title}
             body={elem.body}
             phone={elem.phone}
             time={elem.time}
@@ -83,7 +83,9 @@ function Found() {
         <Navbar />
         <Intro text={text} />
         <h3 className="sorry">
-          Sorry, there are no posts at the moment, please try again later
+          {update
+            ? "Loading..."
+            : "Sorry, there are no posts at the moment, please try again later"}
         </h3>
       </div>
     );

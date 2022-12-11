@@ -47,6 +47,7 @@ function Found() {
             title: post.data().title,
             body: post.data().desc,
             phone: post.data().phone,
+            location: post.data().location,
             time: datetime,
           });
         });
@@ -61,9 +62,9 @@ function Found() {
             user={elem.user}
             email={elem.email}
             title={elem.title}
-            tags=""
-            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/${elem.id}.png`)}
-            alt=""
+            tags={elem.location}
+            src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
+            alt={elem.title}
             body={elem.body}
             phone={elem.phone}
             time={elem.time}
@@ -76,14 +77,16 @@ function Found() {
     });
   }, [update]);
 
-  const text = "Found Item Posts";
+  const text = "Lost Item Posts";
   if (cards.length === 0) {
     return (
       <div className="App">
         <Navbar />
         <Intro text={text} />
         <h3 className="sorry">
-          Sorry, there are no posts at the moment, please try again later
+          {update
+            ? "Loading..."
+            : "Sorry, there are no posts at the moment, please try again later"}
         </h3>
       </div>
     );
