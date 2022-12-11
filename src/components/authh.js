@@ -4,16 +4,14 @@ import { setDoc, collection, doc } from "firebase/firestore";
 
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.matches("[data-dropdown-button]");
-  if (!(isDropdownButton && e.target.closest("[data-dropdown]") != null))
-    return;
+  if (isDropdownButton && e.target.closest("[data-dropdown]") === null) return;
 
   let currentDropdown;
   if (isDropdownButton) {
     currentDropdown = e.target.closest("[data-dropdown]");
-    if (!currentDropdown.classList.contains("active"))
+    if (currentDropdown.classList.contains("active"))
       currentDropdown.classList.remove("active");
-  } else {
-    currentDropdown.classList.add("active");
+    else currentDropdown.classList.add("active");
   }
 
   document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
@@ -29,6 +27,7 @@ document.addEventListener("click", (e) => {
     } else return;
   });
 });
+
 function blurAll() {
   var tmp = document.createElement("input");
   document.body.appendChild(tmp);

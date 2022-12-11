@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 import LoginAuth from "./loginAuth";
 
 const Login = () => {
-  console.log(window.history);
   const paperstyle = {
     padding: "20px",
     height: "70vh",
