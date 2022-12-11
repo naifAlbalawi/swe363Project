@@ -6,12 +6,10 @@ import menu from "../images/menu.png";
 import edit from "../images/edit.png";
 import deletep from "../images/delete.png";
 import report from "../images/report.png";
-import profileimg from "../images/profile.png";
 
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.matches("[data-dropdown-button]");
-  if ((isDropdownButton && e.target.closest("[data-dropdown]") === null))
-    return;
+  if (isDropdownButton && e.target.closest("[data-dropdown]") === null) return;
 
   let currentDropdown;
   if (isDropdownButton) {

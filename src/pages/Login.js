@@ -3,7 +3,7 @@ import "../styling/App.css";
 import Navbar from "../components/Navbar";
 import Intro from "../components/Intro";
 import Login from "../components/login";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { auth } from "../components/fb";
 
 function App() {

@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Card from "react-bootstrap/Card";
-import { auth, db } from "../components/fb";
-import {
-  collection,
-  getDoc,
-  getDocs,
-  doc,
-  query,
-  where,
-} from "firebase/firestore";
+import { db } from "../components/fb";
+import { collection, getDoc, getDocs, doc } from "firebase/firestore";
 import ListGroup from "react-bootstrap/ListGroup";
 import logo from "../images/kfupm.png";
 import { Link } from "react-router-dom";
