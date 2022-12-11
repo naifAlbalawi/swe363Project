@@ -40,13 +40,8 @@ export default function SimpleSlider() {
             id={elem.id}
             user={elem.user}
             title={elem.title}
-<<<<<<< HEAD
-            tags={elem.location}
-            // src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
-=======
             location={elem.location}
             src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
->>>>>>> de63cf508e9d9c839f02d13f4d3ce09c1da88349
             alt={elem.title}
             body={elem.body}
             contact={elem.contact}
