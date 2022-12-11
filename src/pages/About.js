@@ -8,7 +8,7 @@ function App() {
   const text = "About Us";
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       <Intro text={text} />
       <CarIntro />
     </div>

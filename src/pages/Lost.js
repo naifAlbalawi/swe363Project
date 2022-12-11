@@ -38,15 +38,15 @@ function Found() {
       data.forEach((post) => {
         let docRef = doc(db, "Users", post.data().user);
         getDoc(docRef).then((user) => {
-          let timestamp = post.data().time;
-          let datetime = timestamp.toDate().toDateString();
+          let timestamp = new Date(post.data().postedAt.seconds * 1000);
+          let datetime = timestamp.toDateString();
           posts.push({
             id: post.id,
             user: user.data().Username,
             email: user.data().Useremail,
             title: post.data().title,
             body: post.data().desc,
-            phone: post.data().phone,
+            contact: post.data().contact,
             location: post.data().location,
             time: datetime,
           });
@@ -62,11 +62,11 @@ function Found() {
             user={elem.user}
             email={elem.email}
             title={elem.title}
-            tags={elem.location}
+            location={elem.location}
             src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
             alt={elem.title}
             body={elem.body}
-            phone={elem.phone}
+            contact={elem.contact}
             time={elem.time}
           />
         );

@@ -43,20 +43,19 @@ function blurAll() {
 function Card({
   id,
   user,
-  email,
+  contact,
   title,
-  tags,
+  location,
   src,
   alt,
   body,
-  phone,
   time,
   profile,
 }) {
   const copy = () => {
     const out = `I want to share with you this item post from FoundLostItems Website:
     *${title}*
-    ${phone}
+    ${contact}
     http://localhost:3000/posts?id=${id}
     `;
     navigator.clipboard.writeText(out);
@@ -68,7 +67,7 @@ function Card({
           <div className="header-container">
             <div className="head-tag">
               <h3 className="card-header">{title}</h3>
-              <span className="card-tags">{tags}</span>
+              <span className="card-tags">{location}</span>
             </div>
             <div className="card-dropdown" data-dropdown>
               <input
@@ -99,13 +98,13 @@ function Card({
           <p className="card-body">{body}</p>
           <div className="footer-container">
             <form className="card-contact-container">
-              <input
+              {/* <input
                 className="link card-contact"
                 type="image"
                 src={call}
                 alt="Call"
                 formAction={`tel:${phone}`}
-              />
+              /> */}
               <div className="card-dropdown copy" data-dropdown>
                 <input
                   className="link card-contact"
@@ -134,7 +133,7 @@ function Card({
         <div className="card-profile">
           <div className="head-tag">
             <h3 className="card-header">{user}</h3>
-            <span className="card-tags">{email}</span>
+            <span className="card-tags">{contact}</span>
           </div>
           <div className="card-dropdown" data-dropdown>
             <input
@@ -167,7 +166,7 @@ function Card({
           <div className="header-container">
             <div className="head-tag">
               <h3 className="card-header">{title}</h3>
-              <span className="card-tags">{tags}</span>
+              <span className="card-tags">{location}</span>
             </div>
           </div>
           {src === "" ? (
@@ -178,13 +177,13 @@ function Card({
           <p className="card-body">{body}</p>
           <div className="footer-container">
             <form className="card-contact-container">
-              <input
+              {/* <input
                 className="link card-contact"
                 type="image"
                 src={call}
                 alt="Call"
                 formAction={`tel:${phone}`}
-              />
+              /> */}
               <div className="card-dropdown copy" data-dropdown>
                 <input
                   className="link card-contact"
@@ -213,14 +212,13 @@ function Card({
 Card.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
-  tags: PropTypes.string,
+  location: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
   body: PropTypes.string,
-  phone: PropTypes.string,
+  contact: PropTypes.string,
   time: PropTypes.string,
   user: PropTypes.string,
-  email: PropTypes.string,
   profile: PropTypes.bool,
 };
 

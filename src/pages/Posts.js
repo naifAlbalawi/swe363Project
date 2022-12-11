@@ -37,20 +37,19 @@ function Posts({ params }) {
   useEffect(() => {
     if (paramsVal.id) {
       let docRef1 = doc(db, "posts", paramsVal.id);
-      getDoc(docRef1).then((data) => {
+      getDoc(docRef1).then((post) => {
         const posts = [];
-        let docRef = doc(db, "Users", data.data().user);
+        let docRef = doc(db, "Users", post.data().user);
         getDoc(docRef).then((user) => {
-          let timestamp = data.data().time;
-          let datetime = timestamp.toDate().toDateString();
+          let timestamp = new Date(post.data().postedAt.seconds * 1000);
+          let datetime = timestamp.toDateString();
           posts.push({
-            id: data.id,
-            user: user.data().Username,
-            email: user.data().Useremail,
-            title: data.data().title,
-            body: data.data().desc,
-            phone: data.data().phone,
-            location: data.data().location,
+            id: post.id,
+            user: post.data().name,
+            title: post.data().title,
+            body: post.data().desc,
+            contact: post.data().contact,
+            location: post.data().location,
             time: datetime,
           });
         });
@@ -62,13 +61,12 @@ function Posts({ params }) {
               key={index}
               id={elem.id}
               user={elem.user}
-              email={elem.email}
               title={elem.title}
-              tags={elem.location}
+              location={elem.location}
               src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
-              phone={elem.phone}
+              contact={elem.contact}
               time={elem.time}
             />
           );
@@ -85,15 +83,14 @@ function Posts({ params }) {
         data.forEach((post) => {
           let docRef = doc(db, "Users", post.data().user);
           getDoc(docRef).then((user) => {
-            let timestamp = post.data().time;
-            let datetime = timestamp.toDate().toDateString();
+            let timestamp = new Date(post.data().postedAt.seconds * 1000);
+            let datetime = timestamp.toDateString();
             posts.push({
               id: post.id,
-              user: user.data().Username,
-              email: user.data().Useremail,
+              user: post.data().name,
               title: post.data().title,
               body: post.data().desc,
-              phone: post.data().phone,
+              contact: post.data().contact,
               location: post.data().location,
               time: datetime,
             });
@@ -107,13 +104,12 @@ function Posts({ params }) {
               key={index}
               id={elem.id}
               user={elem.user}
-              email={elem.email}
               title={elem.title}
-              tags={elem.location}
+              location={elem.location}
               src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
-              phone={elem.phone}
+              contact={elem.contact}
               time={elem.time}
             />
           );
@@ -130,15 +126,14 @@ function Posts({ params }) {
         data.forEach((post) => {
           let docRef = doc(db, "Users", post.data().user);
           getDoc(docRef).then((user) => {
-            let timestamp = post.data().time;
-            let datetime = timestamp.toDate().toDateString();
+            let timestamp = new Date(post.data().postedAt.seconds * 1000);
+            let datetime = timestamp.toDateString();
             posts.push({
               id: post.id,
-              user: user.data().Username,
-              email: user.data().Useremail,
+              user: post.data().name,
               title: post.data().title,
               body: post.data().desc,
-              phone: post.data().phone,
+              contact: post.data().contact,
               location: post.data().location,
               time: datetime,
             });
@@ -152,13 +147,12 @@ function Posts({ params }) {
               key={index}
               id={elem.id}
               user={elem.user}
-              email={elem.email}
               title={elem.title}
-              tags={elem.location}
+              location={elem.location}
               src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
-              phone={elem.phone}
+              contact={elem.contact}
               time={elem.time}
             />
           );
@@ -173,15 +167,14 @@ function Posts({ params }) {
         data.forEach((post) => {
           let docRef = doc(db, "Users", post.data().user);
           getDoc(docRef).then((user) => {
-            let timestamp = post.data().time;
-            let datetime = timestamp.toDate().toDateString();
+            let timestamp = new Date(post.data().postedAt.seconds * 1000);
+            let datetime = timestamp.toDateString();
             posts.push({
               id: post.id,
-              user: user.data().Username,
-              email: user.data().Useremail,
+              user: post.data().name,
               title: post.data().title,
               body: post.data().desc,
-              phone: post.data().phone,
+              contact: post.data().contact,
               location: post.data().location,
               time: datetime,
             });
@@ -195,13 +188,12 @@ function Posts({ params }) {
               key={index}
               id={elem.id}
               user={elem.user}
-              email={elem.email}
               title={elem.title}
-              tags={elem.location}
+              location={elem.location}
               src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
               alt={elem.title}
               body={elem.body}
-              phone={elem.phone}
+              contact={elem.contact}
               time={elem.time}
             />
           );
