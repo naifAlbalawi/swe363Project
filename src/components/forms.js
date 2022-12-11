@@ -2,50 +2,6 @@ import React from "react";
 import { useRef } from "react";
 
 function Forms() {
-  var imagekit = new ImageKit({
-    publicKey: "public_FX9dRCChSOdQWnSSNG32ntOoG1w=",
-    urlEndpoint: "https://ik.imagekit.io/Mohammedalsahli7",
-    authenticationEndpoint: "http://www.yourserver.com/auth",
-  });
-  // URL generation
-
-  var imageURL = imagekit.url({
-    path: "/default-image.jpg",
-    transformation: [
-      {
-        height: "300",
-        width: "400",
-      },
-    ],
-  });
-  // Upload function internally uses the ImageKit.io javascript SDK
-
-  function upload(data) {
-    var file = document.getElementById("file1");
-    imagekit.upload(
-      {
-        file: file.files[0],
-        fileName: "abc1.jpg",
-        tags: ["tag1"],
-      },
-      function (err, result) {
-        console.log(arguments);
-
-        console.log(
-          imagekit.url({
-            src: result.url,
-            transformation: [
-              {
-                height: 300,
-                width: 400,
-              },
-            ],
-          })
-        );
-      }
-    );
-  }
-
   var x = useRef(null); // document.getElementById("LostForm");
   var y = useRef(null); //document.getElementById("FoundForm");
   var z = useRef(null); //document.getElementById("btn");

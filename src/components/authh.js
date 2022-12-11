@@ -2,37 +2,48 @@ import { auth, db } from "./fb";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, collection, doc } from "firebase/firestore";
 
-document.addEventListener("click", (e) => {
-  const isDropdownButton = e.target.matches("[data-dropdown-button]");
-  if (isDropdownButton && e.target.closest("[data-dropdown]") === null) return;
-
-  let currentDropdown;
-  if (isDropdownButton) {
-    currentDropdown = e.target.closest("[data-dropdown]");
-    if (currentDropdown.classList.contains("active"))
-      currentDropdown.classList.remove("active");
-    else currentDropdown.classList.add("active");
-  }
-
-  document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
-    if (dropdown.classList.contains("copy")) {
-      setTimeout(function () {
-        dropdown.classList.remove("active");
-        blurAll();
-      }, 700);
-    }
-    if (dropdown !== currentDropdown) {
-      dropdown.classList.remove("active");
-      blurAll();
-    } else return;
-  });
+var imagekit = new ImageKit({
+  publicKey: "public_FX9dRCChSOdQWnSSNG32ntOoG1w=",
+  urlEndpoint: "https://ik.imagekit.io/Mohammedalsahli7",
+  authenticationEndpoint: "http://www.yourserver.com/auth",
 });
+// URL generation
 
-function blurAll() {
-  var tmp = document.createElement("input");
-  document.body.appendChild(tmp);
-  tmp.focus();
-  document.body.removeChild(tmp);
+var imageURL = imagekit.url({
+  path: "/default-image.jpg",
+  transformation: [
+    {
+      height: "300",
+      width: "400",
+    },
+  ],
+});
+// Upload function internally uses the ImageKit.io javascript SDK
+
+function upload(data) {
+  var file = document.getElementById("file1");
+  imagekit.upload(
+    {
+      file: file.files[0],
+      fileName: "abc1.jpg",
+      tags: ["tag1"],
+    },
+    function (err, result) {
+      console.log(arguments);
+
+      console.log(
+        imagekit.url({
+          src: result.url,
+          transformation: [
+            {
+              height: 300,
+              width: 400,
+            },
+          ],
+        })
+      );
+    }
+  );
 }
 
 function a() {
