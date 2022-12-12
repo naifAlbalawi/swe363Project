@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Intro from "../components/Intro";
-import CarIntro from "../components/CarouselIntro";
 import Forms from "../components/forms";
-import SimpleSlider from "../components/CarouserLostPosts";
 import { auth } from "../components/fb";
 import { useNavigate } from "react-router-dom";
 
@@ -16,13 +14,12 @@ function App() {
       }
     });
   });
-  const text = "Trying to save what KFUPM students and staff lost";
+  const text = "Create New Post";
   return (
     <div className="App">
       <Navbar />
       <Intro text={text} />
-      <CarIntro />
-      <SimpleSlider />
+      <Forms />
     </div>
   );
 }

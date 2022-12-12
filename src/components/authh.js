@@ -17,14 +17,7 @@ function a() {
         });
       })
       .catch((e) => {
-        if (e.code === "auth/email-already-in-use") {
-          document.querySelector("#error").innerHTML = "Email already exists";
-        } else if (e.code === "auth/weak-password") {
-          document.querySelector("#error").innerHTML =
-            "password must be more than 6 digits";
-        } else if (e.code === "auth/invalid-email") {
-          document.querySelector("#error").innerHTML = "Invalid email";
-        }
+        alert(e);
       });
   });
 }

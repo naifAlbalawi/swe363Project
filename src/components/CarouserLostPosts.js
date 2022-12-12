@@ -38,7 +38,6 @@ export default function SimpleSlider() {
           <LostCard
             key={index}
             id={elem.id}
-            user={elem.user}
             title={elem.title}
             location={elem.location}
             src={require(`C:/Users/xmxm7/Desktop/GitHub/swe363Project/src/images/post1.png`)}
@@ -97,9 +96,12 @@ function LostCard(post) {
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item> {post.contact}</ListGroup.Item>
+          <ListGroup.Item> {post.location}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Link to={`/posts?id=${post.id}`}>Visit</Link>
+          <Link to={`/posts?id=${post.id}`} target="_blank">
+            Visit
+          </Link>
         </Card.Body>
       </Card>
     </div>

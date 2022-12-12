@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import logout from "./logOutAuth";
 import { auth } from "../components/fb";
+import "../styling/App.css";
 function Navbar() {
   let [user, setUser] = useState(null);
   auth.onAuthStateChanged((user) => {
@@ -10,7 +11,7 @@ function Navbar() {
   if (!user)
     return (
       <>
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-light" id="nav">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               LOGO
@@ -56,7 +57,7 @@ function Navbar() {
   else
     return (
       <>
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" id="nav">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               LOGO
@@ -78,7 +79,7 @@ function Navbar() {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li id="Creat-post" className="nav-item">
-                  <Link className={"nav-link"} to="#FormBack">
+                  <Link className={"nav-link"} to="/new">
                     Create Post
                   </Link>
                 </li>
@@ -92,7 +93,7 @@ function Navbar() {
                     Lost Items
                   </Link>
                 </li>
-                <li id="lost" className="nav-item">
+                <li id="post" className="nav-item">
                   <Link className={"nav-link"} to="/posts">
                     All Items
                   </Link>
@@ -104,7 +105,7 @@ function Navbar() {
                 </li>
               </ul>
               <form className="fit-c" role="search">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link
                       onClick={logout}
@@ -114,14 +115,6 @@ function Navbar() {
                     >
                       Logout
                     </Link>
-                  </li>
-                  <li>
-                    <input
-                      className="nav-link"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
                   </li>
                 </ul>
               </form>

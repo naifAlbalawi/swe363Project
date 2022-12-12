@@ -8,6 +8,8 @@ import Signup from "./Signup";
 import Posts from "./Posts";
 import Found from "./Found";
 import Lost from "./Lost";
+import New from "./New";
+
 import { Routes, Route, useSearchParams } from "react-router-dom";
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
       <Route path="/posts" element={<Posts params={searchParams} />} />
       <Route path="/found" element={<Found />} />
       <Route path="/lost" element={<Lost />} />
+      <Route path="/new" element={<New />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NotFound />} />
